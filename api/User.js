@@ -16,4 +16,9 @@ router.post('/', (req, res) => {
     
 })
 
+router.get('/clear', (req, res) => {
+    Users.length = 0;
+    res.json({message:"users cleared successfully"});
+})
+
 module.exports = router;

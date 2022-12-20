@@ -25,7 +25,7 @@ router.post('/messagefile', upload.array('image',12),(req, res) => {
     const newfilename = uuidv4()+"."+ext;
 
     try{
-        fs.writeFileSync("public/"+newfilename, buffer);
+        fs.writeFileSync("/public/"+newfilename, buffer);
         res.json({message: "uploaded successfully",file:newfilename});
     }catch(err){
         console.log(err);

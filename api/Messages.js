@@ -17,6 +17,7 @@ const messageSchema = new mongoose.Schema({
     to: String,
     text: String,
     time: String,
+    type: String,
 });
 
 // create message model
@@ -30,6 +31,7 @@ router.post('/sendMessage', (req, res) => {
         to: req.body.to,
         text: req.body.text,
         time: req.body.time,
+        type: req.body.type,
     });
     message.save((err) => {
         if (err) {

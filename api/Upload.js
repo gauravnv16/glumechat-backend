@@ -13,7 +13,7 @@ const {v4 : uuidv4} = require('uuid')
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
-
+// router.use('/public', express.static(path.join(__dirname, 'public')));
 
 router.post('/messagefile', upload.array('image',12),(req, res) => {
    
@@ -23,9 +23,9 @@ router.post('/messagefile', upload.array('image',12),(req, res) => {
     const filename = req.body.filename.split(".");
     const ext = filename[filename.length-1];
     const newfilename = uuidv4()+"."+ext;
-
+    console.log(path.join(__dirname,'public',newfilename))
     try{
-        fs.writeFileSync("/public/"+newfilename, buffer);
+        fs.writeFileSync(path.join(__dirname,'public',newfilename), buffer);
         res.json({message: "uploaded successfully",file:newfilename});
     }catch(err){
         console.log(err);

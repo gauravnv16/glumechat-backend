@@ -16,7 +16,7 @@ app.use(cors({
 app.use("/api/users",user)
 app.use("/api/messages",message)
 app.use("/api/upload",upload)
-app.use("/api/static",express.static('public'));
+app.use("/api/static",express.static('./api/public'));
 app.get('/', (req, res) => {
     res.send("server Ready");
 })
